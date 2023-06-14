@@ -28,9 +28,6 @@ jobs:
       - name: List Files
         run: ls target/
 
-      - name: Remove useless files
-        run: rm target/original*
-
       - name: Rename File
         run: mv target/*.jar target/${{ env.NAME }}.jar
 

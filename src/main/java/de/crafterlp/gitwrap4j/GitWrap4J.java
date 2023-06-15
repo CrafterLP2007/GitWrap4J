@@ -6,6 +6,7 @@ import de.crafterlp.gitwrap4j.actions.Action;
 import de.crafterlp.gitwrap4j.auth.Authorization;
 import de.crafterlp.gitwrap4j.exceptions.AuthorizationException;
 import de.crafterlp.gitwrap4j.exceptions.ExecuteException;
+import de.crafterlp.gitwrap4j.implementation.Repository;
 import de.crafterlp.gitwrap4j.implementation.User;
 import de.crafterlp.gitwrap4j.utils.web.GitHubPoster;
 import de.crafterlp.gitwrap4j.utils.web.GitHubRequester;
@@ -59,6 +60,36 @@ public class GitWrap4J {
 
         gson = new Gson();
         return gson.fromJson(requestObject, User.class);
+    }
+
+
+    /**
+     *
+     * returns the repo-class
+     * @param owner : The owner name of the repo as user-class
+     * @param repoName : The name of your repo
+     *
+     */
+    public Repository getRepository(User owner, String repoName) {
+        requestObject = new JsonObject();
+        requestObject = gitHubRequester.request("/repos/" + owner.getLogin() + "/" + repoName);
+
+        gson = new Gson();
+
+        Repository repository = gson.fromJson(requestObject, Repository.class);
+        repository.setOwner(owner);
+
+        gson = new Gson();
+        return repository;
+    }
+
+
+    public static void main(String[] args) {
+        GitWrap4J gitWrap4J = new GitWrap4J();
+        User user = gitWrap4J.getUser("CrafterLP2007");
+
+        Repository repository = gitWrap4J.getRepository(user, "GitWrap4J");
+        System.out.println(repository.getOwner().getBio());
     }
 
 

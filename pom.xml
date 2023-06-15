@@ -18,7 +18,7 @@
         <repository>
             <id>github</id>
             <name>GitHub OWNER Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/CrafterLP2007/GitWrap4J</url>
+            <url>https://maven.pkg.github.com/crafterlp2007/gitwrap4j</url>
         </repository>
     </distributionManagement>
 

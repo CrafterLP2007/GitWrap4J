@@ -42,4 +42,4 @@ jobs:
             target/*.jar
 
       - name: Pushing to MavenCentral
-        run: mvn deploy
+        run: mvn clean deploy

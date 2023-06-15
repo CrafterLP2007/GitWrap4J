@@ -40,6 +40,3 @@ jobs:
           title: "Builds"
           files: |
             target/*.jar
-
-      - name: Pushing to MavenCentral
-        run: mvn clean deploy
